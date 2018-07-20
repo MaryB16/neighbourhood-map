@@ -16,27 +16,48 @@ class App extends Component {
     });
 
     let service = new window.google.maps.places.PlacesService(map);
+    let markers =[];
+    let largeInfowindow = new google.maps.InfoWindow();
+
+    let placeMarkers = (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        results.forEach(function(result){
+          let marker = new google.maps.Marker({
+            position: result.geometry.location,
+            title: result.name,
+            map: map,
+            id:result.id,
+            animation: google.maps.Animation.DROP
+          })
+          markers.push(marker)
+          marker.addListener('click', function() {
+            populateInfoWindow(this, largeInfowindow);
+          })
+
+          function populateInfoWindow(marker, infowindow) {
+        if (infowindow.marker != marker) {
+          infowindow.marker = marker;
+          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.open(map, marker);
+          infowindow.addListener('closeclick',function(){
+            infowindow.setMarker = null;
+          });
+        }
+      }
+
+          console.log(marker)
+        })
+      }
+    }
 
     service.nearbySearch({
       location: {
         lat: 44.4318595,
         lng: 26.0991834
       },
-      radius: 4000,
+      radius: 5000,
       type: ['museum']
-    }, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          new google.maps.Marker({
-            position: results[i].geometry.location,
-            title: results[i].name,
-            map: map,
-            animation: google.maps.Animation.DROP
-          })
-        }
-      }
-    });
-
+    }, placeMarkers);
   }
 
   render() {
