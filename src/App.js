@@ -1,9 +1,11 @@
 /*global google*/
 
 import React, {Component} from 'react';
+import ReactDOMServer from 'react-dom/server';
 import './App.css';
 import MapStyles from './MapStyles';
-import initFoursquareAPI from 'react-foursquare'
+import initFoursquareAPI from 'react-foursquare';
+import InfoWindow from './InfoWindow'
 
 const results = [
   {
@@ -20,6 +22,8 @@ const results = [
     }
   }
 ]
+
+console.log(ReactDOMServer.renderToString(<InfoWindow/>))
 
 let client = {
   clientID: 'B4YCTVS13CAVDHPSUCEE3V5CCZXIJTESKWLYKSGMEPBVGAC3',
@@ -75,7 +79,7 @@ class App extends Component {
         console.log(res.response.venues)
         res.response.venues.forEach(venue => {
           let marker = new google.maps.Marker({position: venue.location, title: venue.name, map: map, animation: google.maps.Animation.DROP})
-
+          console.log(marker)
           markers.push(marker)
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
@@ -84,10 +88,15 @@ class App extends Component {
           function populateInfoWindow(marker, infowindow) {
             if (infowindow.marker !== marker) {
               infowindow.marker = marker;
-              infowindow.setContent(
-                '<div>' + marker.title + '</div>'
-              );
 
+              infowindow.setContent(
+                ReactDOMServer.renderToString(
+                  <InfoWindow
+                    title={venue.name}
+                    address ={venue.location.address}
+                    webAddress ={'https://foursquare.com/v/' + venue.id}
+                  />)
+              );
               infowindow.open(map, marker);
               infowindow.addListener('closeclick', function() {
                 infowindow.setMarker = null;
