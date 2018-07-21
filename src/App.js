@@ -3,11 +3,38 @@
 import React, {Component} from 'react';
 import './App.css';
 import MapStyles from './MapStyles';
+import initFoursquareAPI from 'react-foursquare'
 
-const results =  [
-  {title:"locationOne", position:{ lat: 44.4314812, lng: 26.0983232 }},
-  {title:"locationTwo", position:{ lat: 44.431877, lng: 26.101609 }}
+const results = [
+  {
+    title: "locationOne",
+    position: {
+      lat: 44.4314812,
+      lng: 26.0983232
+    }
+  }, {
+    title: "locationTwo",
+    position: {
+      lat: 44.431877,
+      lng: 26.101609
+    }
+  }
 ]
+
+let client = {
+  clientID: 'B4YCTVS13CAVDHPSUCEE3V5CCZXIJTESKWLYKSGMEPBVGAC3',
+  clientSecret: 'SHDYF1ZZ1YEB4IBJJGZNTE1QFGCGVG23JHKJ1BBCIWWHZWIW'
+}
+
+var foursquare = initFoursquareAPI(client);
+
+var params = {
+  "ll": "44.4318595,26.0991834",
+  "query": 'coffee,starbucks',
+  "categoryId": '4bf58dd8d48988d1e0931735',
+  "radius": 1000
+
+};
 
 class App extends Component {
   componentDidMount() {
@@ -24,12 +51,7 @@ class App extends Component {
     let largeInfowindow = new google.maps.InfoWindow();
 
     results.forEach(function(result) {
-      let marker = new google.maps.Marker({
-         position: result.position,
-         title: result.title,
-         map: map,
-         animation: google.maps.Animation.DROP
-       })
+      let marker = new google.maps.Marker({position: result.position, title: result.title, map: map, animation: google.maps.Animation.DROP})
 
       markers.push(marker)
       marker.addListener('click', function() {
@@ -41,12 +63,39 @@ class App extends Component {
           infowindow.marker = marker;
           infowindow.setContent('<div>' + marker.title + '</div>');
           infowindow.open(map, marker);
-          infowindow.addListener('closeclick',function(){
+          infowindow.addListener('closeclick', function() {
             infowindow.setMarker = null;
           });
         }
       }
       console.log(markers)
+
+      foursquare.venues.getVenues(params).then(res => {
+        console.log("I am a baba and I want to read slowly")
+        console.log(res.response.venues)
+        res.response.venues.forEach(venue => {
+          let marker = new google.maps.Marker({position: venue.location, title: venue.name, map: map, animation: google.maps.Animation.DROP})
+
+          markers.push(marker)
+          marker.addListener('click', function() {
+            populateInfoWindow(this, largeInfowindow);
+          })
+
+          function populateInfoWindow(marker, infowindow) {
+            if (infowindow.marker !== marker) {
+              infowindow.marker = marker;
+              infowindow.setContent(
+                '<div>' + marker.title + '</div>'
+              );
+
+              infowindow.open(map, marker);
+              infowindow.addListener('closeclick', function() {
+                infowindow.setMarker = null;
+              });
+            }
+          }
+        })
+      });
     })
   }
 
