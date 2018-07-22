@@ -7,3 +7,19 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+.wrapper {
+  height:100%;
+}
+
+.filter-menu {
+  color:white;
+  position:absolute;
+  top:20px;
+  left:20px;
+  width:200px;
+  height:500px;
+  border:solid red 3px;
+  background-color: black;
+  opacity: 0.6;
+}
