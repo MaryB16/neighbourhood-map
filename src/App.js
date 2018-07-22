@@ -7,6 +7,7 @@ import MapStyles from './MapStyles';
 import initFoursquareAPI from 'react-foursquare';
 import InfoWindow from './InfoWindow'
 import FilterMenu from './FilterMenu'
+import coffeeShopMarker from './icons/coffeeShopMarker.png'
 
 let client = {
   clientID: 'B4YCTVS13CAVDHPSUCEE3V5CCZXIJTESKWLYKSGMEPBVGAC3',
@@ -22,6 +23,8 @@ var params = {
   "radius": 1000
 
 };
+
+
 
 class App extends Component {
 
@@ -52,7 +55,7 @@ class App extends Component {
 
         let markers = []
         res.response.venues.forEach(venue => {
-          let marker = new google.maps.Marker({position: venue.location, title: venue.name, map: map, animation: google.maps.Animation.DROP})
+          let marker = new google.maps.Marker({position: venue.location, title: venue.name, map: map,  icon:coffeeShopMarker, animation: google.maps.Animation.DROP})
           markers.push(marker)
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
