@@ -24,8 +24,6 @@ var params = {
 
 };
 
-
-
 class App extends Component {
 
   state = {
@@ -55,7 +53,16 @@ class App extends Component {
 
         let markers = []
         res.response.venues.forEach(venue => {
-          let marker = new google.maps.Marker({position: venue.location, title: venue.name, map: map,  icon:coffeeShopMarker, animation: google.maps.Animation.DROP})
+          let marker = new google.maps.Marker({
+            position: {
+              /*Offset added because foursquare markers are offset by a small amount*/
+              lat: venue.location.lat + 0.0002,
+              lng: venue.location.lng - 0.0004
+            },
+            icon:coffeeShopMarker,
+            title: venue.name,
+            map: map,
+            animation: google.maps.Animation.DROP})
           markers.push(marker)
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 
 class FilterMenu extends Component {
 
-  message = () => {
-  console.log('I clicked')
+  message = (venue) => {
+    console.log("I have clicked " + venue.name)
+    console.log("I have clicked " + venue.id)
+
 }
 
   render() {
@@ -15,7 +17,7 @@ class FilterMenu extends Component {
     return (
       <div className='filter-menu'>
         {venues.map(venue=>
-          <div key ={venue.id} className='venue'  onClick={this.message}>
+          <div key ={venue.id} className='venue'  onClick={() => this.message(venue)}>
             {venue.name}
           </div>
         )}
