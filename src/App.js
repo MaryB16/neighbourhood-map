@@ -28,7 +28,7 @@ class App extends Component {
 
   state = {
     markers: [],
-    venues: []
+    venues: [],
   }
 
   componentDidMount() {
@@ -49,10 +49,12 @@ class App extends Component {
 
     let largeInfowindow = new google.maps.InfoWindow();
       foursquare.venues.getVenues(params).then(res => {
-        console.log("I am a baba and I want to read slowly")
-
+        console.error("these are the venues")
+        console.log(res.response.venues)
+        let venues = res.response.venues
         let markers = []
-        res.response.venues.forEach(venue => {
+
+        venues.forEach(venue => {
           let marker = new google.maps.Marker({
             position: {
               /*Offset added because foursquare markers are offset by a small amount*/
