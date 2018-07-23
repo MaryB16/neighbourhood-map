@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-
+/*global google*/
 class FilterMenu extends Component {
 
-  message = (venue) => {
-    console.log("I have clicked " + venue.name)
-    console.log("I have clicked " + venue.id)
-
+  openInfoWindow = (venue) => {
+    this.props.markers.forEach((marker,index) => {
+    if(venue.id=== marker.id)  google.maps.event.trigger(this.props.markers[index], 'click')
+  })
 }
 
   render() {
@@ -17,7 +17,7 @@ class FilterMenu extends Component {
     return (
       <div className='filter-menu'>
         {venues.map(venue=>
-          <div key ={venue.id} className='venue'  onClick={() => this.message(venue)}>
+          <div key ={venue.id} className='venue'  onClick={() => this.openInfoWindow(venue)}>
             {venue.name}
           </div>
         )}

@@ -62,6 +62,7 @@ class App extends Component {
             icon:coffeeShopMarker,
             title: venue.name,
             map: map,
+            id:venue.id,
             animation: google.maps.Animation.DROP})
           markers.push(marker)
           marker.addListener('click', function() {
