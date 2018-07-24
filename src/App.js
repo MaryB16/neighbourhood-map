@@ -116,11 +116,15 @@ class App extends Component {
   render() {
     return (
       <div className='wrapper'>
+        <div className='header'>
+          <button
+            className="button"
+            onClick={this.toggleMenu}>
+          </button>
+          <p>Coffee Shops near the city center of Bucharest</p>
+        </div>
         <div id="map"></div>
-        <button
-          className="button"
-          onClick={this.toggleMenu}>
-        </button>
+
         {this.state.isHidden===false &&
           <FilterMenu
             venues ={this.state.venues}
