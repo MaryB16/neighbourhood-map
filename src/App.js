@@ -20,7 +20,7 @@ var params = {
   "ll": "44.4318595,26.0991834",
   "query": 'coffee,starbucks',
   "categoryId": '4bf58dd8d48988d1e0931735',
-  "radius": 1000
+  "radius": 800
 
 };
 
@@ -49,8 +49,8 @@ class App extends Component {
   componentDidMount() {
     let map = new google.maps.Map(document.getElementById('map'), {
       center: {
-        lat: 44.4318595,
-        lng: 26.0991834
+        lat: 44.434121,
+        lng: 26.0971294
       },
       zoom: 16,
       styles: MapStyles,
