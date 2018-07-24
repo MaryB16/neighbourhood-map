@@ -29,6 +29,21 @@ class App extends Component {
   state = {
     markers: [],
     venues: [],
+    isHidden:true
+  }
+
+  toggleMenu = () => {
+    const {isHidden} = this.state
+    if(isHidden) {
+      this.setState({
+        isHidden: false
+      })
+    }
+    else {
+      this.setState({
+        isHidden: true
+      })
+    }
   }
 
   componentDidMount() {
@@ -102,10 +117,15 @@ class App extends Component {
     return (
       <div className='wrapper'>
         <div id="map"></div>
-        <FilterMenu
-          venues ={this.state.venues}
-          markers ={this.state.markers}
-        />
+        <button
+          className="button"
+          onClick={this.toggleMenu}>
+        </button>
+        {this.state.isHidden===false &&
+          <FilterMenu
+            venues ={this.state.venues}
+            markers ={this.state.markers}
+          />}
       </div>
     )
   }
