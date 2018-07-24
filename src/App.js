@@ -94,7 +94,7 @@ class App extends Component {
                 ReactDOMServer.renderToString(
                   <InfoWindow
                     title={venue.name}
-                    address ={venue.location.address}
+                    address ={venue.location.address ? venue.location.address : 'No address available' }
                     webAddress ={'https://foursquare.com/v/' + venue.id}
                   />)
               );
