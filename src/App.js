@@ -84,7 +84,11 @@ class App extends Component {
           markers.push(marker)
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
-            toggleBounce()
+
+            //Remove the bounce animation from previous clicked markers
+            markers.forEach(marker => marker.setAnimation(null))
+            //Add bounce animation to the clicked marker
+            toggleBounce(this)
           })
 
         function toggleBounce() {
@@ -111,6 +115,8 @@ class App extends Component {
               infowindow.open(map, marker);
               infowindow.addListener('closeclick', function() {
                 infowindow.setMarker = null;
+                /*Remove bounce animation if the infoWindow is closed by user*/
+                marker.setAnimation(null);
               });
             }
           }
