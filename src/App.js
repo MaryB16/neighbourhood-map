@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import ReactDOMServer from 'react-dom/server';
 import './App.css';
 import MapStyles from './MapStyles';
-import initFoursquareAPI from 'react-foursquare';
+import initFoursquareAPI from 'react-foursquare-es5-mod';
 import InfoWindow from './InfoWindow'
 import FilterMenu from './FilterMenu'
 import coffeeShopMarker from './icons/coffeeShopMarker.png'
