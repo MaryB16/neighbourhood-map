@@ -33,7 +33,7 @@ class FilterMenu extends Component {
     else filteredVenues = venues;
 
     return (<div className='filter-menu'>
-      <div className='user-input'>
+      <div  className='user-input'>
         <input
           type="text"
           placeholder="Search coffee shop"
@@ -41,7 +41,7 @@ class FilterMenu extends Component {
           onChange={(event) => this.updateQuery(event.target.value) }
         />
       </div>
-      {filteredVenues.map(venue => <div key={venue.id} className='venue' onClick={() => this.openInfoWindow(venue)}>
+      {filteredVenues.map(venue => <div  tabIndex="0" key={venue.id} className='venue' onClick={() => this.openInfoWindow(venue)}>
         {venue.name}
       </div>
       )}

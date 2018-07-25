@@ -132,17 +132,18 @@ class App extends Component {
   render() {
     return (
       <div className='wrapper'>
-        <div className='header'>
-          <button
-            className="button"
+        <div className='header' aria-label='Header'>
+          <button aria-label='Search for coffee shops'
+            className='button'
             onClick={this.toggleMenu}>
           </button>
-          <p>Coffee Shops near the city center of Bucharest</p>
+          <p tabIndex='1'>Coffee Shops near the city center of Bucharest</p>
         </div>
-        <div id="map"></div>
+        <div id="map" role="application"></div>
 
         {this.state.isHidden===false &&
           <FilterMenu
+            role='menu'
             venues ={this.state.venues}
             markers ={this.state.markers}
           />}
