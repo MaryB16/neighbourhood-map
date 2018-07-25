@@ -90,10 +90,11 @@ class App extends Component {
         function toggleBounce() {
           if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
-          } else {
+          }
+          else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
+          }
         }
-      }
 
           function populateInfoWindow(marker, infowindow) {
             if (infowindow.marker !== marker) {
