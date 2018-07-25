@@ -84,7 +84,16 @@ class App extends Component {
           markers.push(marker)
           marker.addListener('click', function() {
             populateInfoWindow(this, largeInfowindow);
+            toggleBounce()
           })
+
+        function toggleBounce() {
+          if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+          } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      }
 
           function populateInfoWindow(marker, infowindow) {
             if (infowindow.marker !== marker) {
