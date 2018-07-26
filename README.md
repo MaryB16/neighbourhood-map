@@ -10,7 +10,7 @@ The application displays a simple map of the main coffee shops in the city cente
 
 In order to run this application on your computer just follow these steps:
 
-* Install npm packages if you do not have them. You can downloaded it from [here](https://www.npmjs.com/).
+* This project uses npm packages. If you don't have npm, you can downloaded it from [here](https://www.npmjs.com/).
 * Clone or download the repository and go to the directory where you have cloned or downloaded it.
 * Open the command line and type `npm install`. ( **Note**: React has its own special packages named `yarn`. If you are more familiar with the react library and wish to use their packages you can also write `yarn install` )
     - This application uses the following react package that will be installed automatically:
