@@ -3,7 +3,7 @@
   overflow: visible;
 }
 
-.mapContainer {
+.map-container {
   height: calc(100% - 95px);
 }
 
@@ -65,21 +65,21 @@ html, body {
   color: #f6f1ed;
 }
 
-/*InfoWindow*/
+/*Info Window*/
 
-.infoWindow h3 {
+.info-window h3 {
   margin-top: 0;
   margin-bottom: 5px;
   color: #30231d;
   font-size: 1.2em;
 }
 
-.infoWindow>p {
+.info-window>p {
   font-size: 1.1em;
   margin-top: 7px;
 }
 
-.infoWindow>a {
+.info-window>a {
   font-weight: bold;
 }
 

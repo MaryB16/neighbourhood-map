@@ -120,7 +120,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div className="mapContainer">
+      <div className="map-container">
         {this.state.fourSquareError &&
           <h3 className='error-message'>Couldn't load locations. Please refresh page or try again later</h3>}
 
