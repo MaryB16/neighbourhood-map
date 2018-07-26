@@ -1,15 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class InfoWindow extends Component {
-  render() {
+const InfoWindow = (props) => {
     return (
-      <div tabIndex='0' aria-label={`${this.props.title} information`} className='infoWindow'>
-        <h3>{this.props.title}</h3>
-        <p tabIndex='0 '>{`Street: ${this.props.address}`}</p>
-        <a target='_blank' href={this.props.webAddress}>Click here for details</a>
+      <div tabIndex='0' aria-label={`${props.title} information`} className='info-window'>
+        <h3>{props.title}</h3>
+        <p tabIndex='0'>{`Street: ${props.address}`}</p>
+        <a target='_blank' href={props.webAddress} rel='noreferrer noopener'>Click here for details</a>
       </div>
     )
-  }
 }
 
 export default InfoWindow;
