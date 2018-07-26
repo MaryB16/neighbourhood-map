@@ -109,6 +109,19 @@ html, body {
   padding-left:10px;
 }
 
+/*Error Messages*/
+.error-message {
+  position:absolute;
+  margin-top:0;
+  padding-top:30px;
+  text-align:center;
+  line-height: 40px;
+  z-index:3;
+  top:80px;
+  width:100%;
+  background-color:#d3d3d3;
+}
+
 
 /*Media queries*/
 

@@ -62,7 +62,7 @@ class App extends Component {
         </div>
         {this.state.isScriptLoaded ?
           <Map isFilterHidden={this.state.isHidden} /> :
-          <div className="loading-message">{this.state.loadingMessage}</div>}
+          <h3 className="error-message">{this.state.loadingMessage}</h3>}
         <div className='footer' role='footer' aria-hidden= 'true'>
           <p>{'Powered by '}</p>
           <a target='_blank' href='https://foursquare.com'>Foursquare</a>
