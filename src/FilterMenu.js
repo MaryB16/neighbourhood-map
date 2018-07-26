@@ -40,9 +40,9 @@ class FilterMenu extends Component {
           value={this.state.query}
           onChange={(event) => this.updateQuery(event.target.value) }
         />
-      </div>
-      {filteredVenues.map(venue => <div  tabIndex="0" key={venue.id} className='venue' onClick={() => this.openInfoWindow(venue)}>
-        {venue.name}
+        </div >
+        {filteredVenues.map(venue => <div  tabIndex="0" role="listitem" key={venue.id} className='venue' onClick={() => this.openInfoWindow(venue)}>
+          {venue.name}
       </div>
       )}
     </div>)
