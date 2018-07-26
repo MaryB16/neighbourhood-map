@@ -1,6 +1,6 @@
 #map {
   height: 100%;
-  overflow:visible;
+  overflow: visible;
 }
 
 .mapContainer {
@@ -18,6 +18,7 @@ html, body {
 }
 
 /* Header */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -27,124 +28,123 @@ html, body {
 }
 
 .header p {
-  font-size:1.5em;
-  margin-right:20px;
+  font-size: 1.5em;
+  margin-right: 20px;
 }
 
 .button {
   background: url('./icons/hamburgerIcon.png') no-repeat;
-  background-size:contain;
-  color:#f6f1ed;
+  background-size: contain;
+  color: #f6f1ed;
   width: 35px;
   height: 35px;
   cursor: pointer;
   border: none;
-  margin-left:20px;
-  margin-top:20px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 /*Footer*/
+
 .footer {
-  display:flex;
-  height:15px;
-  font-size:0.8em;
+  display: flex;
+  height: 15px;
+  font-size: 0.8em;
   justify-content: flex-end;
   background-color: #6a5750;
   color: #f6f1ed;
 }
 
 .footer p {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 .footer a {
-  margin-left:5px;
+  margin-left: 5px;
   color: #f6f1ed;
-
 }
-
 
 /*InfoWindow*/
+
 .infoWindow h3 {
-  margin-top:0;
-  margin-bottom:5px;
+  margin-top: 0;
+  margin-bottom: 5px;
   color: #30231d;
-  font-size:1.2em;
+  font-size: 1.2em;
 }
 
-.infoWindow > p {
-  font-size:1.1em;
-  margin-top:7px;
+.infoWindow>p {
+  font-size: 1.1em;
+  margin-top: 7px;
 }
 
-.infoWindow > a {
-  font-weight:bold;
+.infoWindow>a {
+  font-weight: bold;
 }
-
 
 /*Filter Menu*/
+
 .filter-menu {
-  position:absolute;
+  position: absolute;
   color: #f6f1ed;
   top: 80px;
   width: 270px;
-  height:calc(100% - 80px);
+  height: calc(100% - 80px);
   background-color: #6a5750;
   cursor: pointer;
-  overflow:auto;
+  overflow: auto;
 }
+
 .user-input input {
-  width:100%;
-  height:45px;
-  margin-bottom:20px;
-  font-size:1.2em;
-  color:#30231d;
-  border:none;
+  width: 100%;
+  height: 45px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  color: #30231d;
+  border: none;
 }
 
 .venue {
-  font-size:1.2em;
-  margin-bottom:15px;
-  padding-left:10px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  padding-left: 10px;
 }
 
 /*Error Messages*/
-.error-message {
-  position:absolute;
-  margin-top:0;
-  padding-top:30px;
-  text-align:center;
-  line-height: 40px;
-  z-index:3;
-  top:80px;
-  width:100%;
-  background-color:#d3d3d3;
-}
 
+.error-message {
+  position: absolute;
+  margin-top: 0;
+  padding-top: 30px;
+  text-align: center;
+  line-height: 40px;
+  z-index: 3;
+  top: 80px;
+  width: 100%;
+  background-color: #d3d3d3;
+}
 
 /*Media queries*/
 
 @media screen and (max-width: 439px) {
   .header p {
-    font-size:1.2em;
-    text-align:right;
-    margin-right:20px;
+    font-size: 1.2em;
+    text-align: right;
+    margin-right: 20px;
   }
-
   .filter-menu {
     width: 220px;
   }
-
   .venue {
-    font-size:1.1em;
+    font-size: 1.1em;
   }
 }
 
-@media screen and (min-width: 440px)  and (max-width: 580px){
+@media screen and (min-width: 440px) and (max-width: 580px) {
   .header p {
-    font-size:1.3em;
-    margin-left:10px;
-    text-align:center;
+    font-size: 1.3em;
+    margin-left: 10px;
+    text-align: center;
   }
 }

@@ -28,7 +28,6 @@ class FilterMenu extends Component {
         let shouldMarkerBeVisible = marker.title.toLowerCase().includes(query.toLowerCase());
         marker.setVisible(shouldMarkerBeVisible)
       })
-      console.log(filteredVenues)
     }
     else filteredVenues = venues;
 

@@ -1,21 +1,14 @@
-/*global google*/
 
 import React, {Component} from 'react';
-import ReactDOMServer from 'react-dom/server';
 import './App.css';
-import MapStyles from './MapStyles';
-import initFoursquareAPI from 'react-foursquare-es5-mod';
-import InfoWindow from './InfoWindow'
-import FilterMenu from './FilterMenu'
-import coffeeShopMarker from './icons/coffeeShopMarker.png'
-import Map from './Map'
+import Map from './Map';
 
 class App extends Component {
 
   state = {
     isHidden: true,
     isScriptLoaded: false,
-    loadingMessage: "Loading map"
+    loadingMessage: 'Loading map'
   }
 
   toggleMenu = () => {
@@ -33,7 +26,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let googleMapScript = document.createElement("script")
+    let googleMapScript = document.createElement('script')
     googleMapScript.onload = () => {
       this.setState({
         isScriptLoaded: true
@@ -43,7 +36,7 @@ class App extends Component {
     googleMapScript.onerror = () => {
       this.setState({
         isScriptLoaded: false,
-        loadingMessage: "Google Maps failed to load"
+        loadingMessage: 'Google Maps failed to load'
       })
     }
     googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBB9mgpOXLSD2ds0Yl3okmuQaUcJkMNPuI&libraries=places/'
@@ -63,9 +56,9 @@ class App extends Component {
         {this.state.isScriptLoaded ?
           <Map isFilterHidden={this.state.isHidden} /> :
           <h3 className="error-message">{this.state.loadingMessage}</h3>}
-        <div className='footer' role='footer' aria-hidden= 'true'>
+        <div className='footer' aria-hidden= 'true'>
           <p>{'Powered by '}</p>
-          <a target='_blank' href='https://foursquare.com'>Foursquare</a>
+          <a href='https://foursquare.com' rel='noreferrer noopener'>Foursquare</a>
         </div>
       </div>
     )

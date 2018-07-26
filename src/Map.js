@@ -47,8 +47,6 @@ class Map extends Component {
 
     let largeInfowindow = new google.maps.InfoWindow();
       foursquare.venues.getVenues(params).then(res => {
-        console.error("these are the venues")
-        console.log(res.response.venues)
         let venues = res.response.venues
         let markers = []
 
