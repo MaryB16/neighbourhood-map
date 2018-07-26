@@ -26,7 +26,8 @@ class Map extends Component {
 
   state = {
     markers: [],
-    venues: []
+    venues: [],
+    fourSquareError: false
   }
 
   componentDidMount() {
@@ -88,6 +89,7 @@ class Map extends Component {
 
               infowindow.setContent(
                 ReactDOMServer.renderToString(
+
                   <InfoWindow
                     title={venue.name}
                     address ={venue.location.address ? venue.location.address : 'No address available' }
@@ -108,12 +110,22 @@ class Map extends Component {
           venues: res.response.venues,
           markers: markers
         })
-      });
+      })
+      .catch (()=> {
+        // when an error happens we set the state to something else
+        this.setState({
+          fourSquareError: true
+          })
+      }
+    )
   }
 
   render() {
     return (
       <div className="mapContainer">
+        {this.state.fourSquareError &&
+          <h3 className='error-message'>Couldn't load locations. Please refresh page or try again later</h3>}
+
         <div id="map" role="application"></div>
         {this.props.isFilterHidden===false &&
           <FilterMenu
