@@ -4,7 +4,7 @@
 }
 
 .mapContainer {
-  height: calc(100% - 80px);
+  height: calc(100% - 95px);
 }
 
 html, body {
@@ -18,7 +18,6 @@ html, body {
 }
 
 /* Header */
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -43,6 +42,28 @@ html, body {
   margin-left:20px;
   margin-top:20px;
 }
+
+/*Footer*/
+.footer {
+  display:flex;
+  height:15px;
+  font-size:0.8em;
+  justify-content: flex-end;
+  background-color: #6a5750;
+  color: #f6f1ed;
+}
+
+.footer p {
+  margin:0;
+  padding:0;
+}
+
+.footer a {
+  margin-left:5px;
+  color: #f6f1ed;
+
+}
+
 
 /*InfoWindow*/
 .infoWindow h3 {

@@ -13,7 +13,9 @@ import Map from './Map'
 class App extends Component {
 
   state = {
-    isHidden:true
+    isHidden: true,
+    isScriptLoaded: false,
+    loadingMessage: "Loading map"
   }
 
   toggleMenu = () => {
@@ -30,18 +32,37 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    let googleMapScript = document.createElement("script")
+    googleMapScript.onload = () => {
+      this.setState({
+        isScriptLoaded: true
+      })
+    }
+
+    googleMapScript.onerror = () => {
+      this.setState({
+        isScriptLoaded: false,
+        loadingMessage: "Google Maps failed to load"
+      })
+    }
+    googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBB9mgpOXLSD2ds0Yl3okmuQaUcJkMNPuI&libraries=places/'
+    document.head.appendChild(googleMapScript);
+  }
+
   render() {
     return (
       <div className='wrapper'>
-        <div className='header' aria-label='Header'>
+        <div className='header' aria-label='header'>
           <button aria-label='Search for coffee shops'
             className='button'
             onClick={this.toggleMenu}>
           </button>
           <p tabIndex='1'>Coffee Shops near the city center of Bucharest</p>
         </div>
-        <Map isFilterHidden={this.state.isHidden}>
-        </Map>
+        {this.state.isScriptLoaded ?
+          <Map isFilterHidden={this.state.isHidden} /> :
+          <div className="loading-message">{this.state.loadingMessage}</div>}
       </div>
     )
   }
