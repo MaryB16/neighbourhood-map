@@ -52,6 +52,13 @@ class App extends Component {
     }
     googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places/`;
     document.head.appendChild(googleMapScript);
+
+    window.gm_authFailure = () => {
+      this.setState({
+        isScriptLoaded: false,
+        loadingMessage: 'Google Maps is not configured properly. Please try again later'
+      });
+    };
   }
 
   componentDidMount() {
